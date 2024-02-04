@@ -23,6 +23,15 @@ def change_mac(interface: str, new_mac: str) -> None:
     subprocess.call(["ifconfig", interface, "up"])
     subprocess.call("ifconfig", shell=True)
 
+def get_mac_address(interface):
+    ifconfig_result = str(subprocess.check_output(["ifconfig", interface]))
+    mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)
+
+    if mac_address_search_result:
+        return mac_address_search_result.group(0)
+    else:
+        print("Could not get MAC address")
+
 # interface = input("Enter the interface name ")
 # new_mac = input("Enter the new MAC Address ")
 
@@ -31,13 +40,8 @@ def change_mac(interface: str, new_mac: str) -> None:
 
 # change_mac(options.interface, options.new_mac)
 
-ifconfig_result = str(subprocess.check_output(["ifconfig",options.interface]))
-mac_address_search_result = re.search(r"\w\w:\w\w:\w\w:\w\w:\w\w:\w\w", ifconfig_result)
-
-if mac_address_search_result:
-    print(mac_address_search_result.group(0))
-else:
-    print("Could not get MAC address")
+current_mac = get_mac_address(options.interface)
+print(f"CURRENT MAC = {current_mac}")
 
 # subprocess.call(f"ifconfig {interface} down", shell=True)
 # subprocess.call(f"ifconfig {interface} hw ether {new_mac}", shell=True)
