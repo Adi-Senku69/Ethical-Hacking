@@ -1,14 +1,21 @@
 #!/usr/bin/env python
 
 from scapy.all import *
-import re
-from pprint import pprint
+import optparse
 
 
 BROADCAST_MAC = "ff:ff:ff:ff:ff:ff"
 
 def scan(ip):
     scapy.arping(ip)
+
+def get_aguments():
+    parser = optparse.OptionParser()
+    parser.add_option("-i", "--ip", dest="IP_address", help="Input the destination IP address or subnet mask")
+    options = parser.parse_args()[0]
+    if not options.IP_address:
+        parser.error("Please specify a target IP address or subnet mask")
+    return options
 
 
 def scan_manual(ip: str) -> list:
@@ -30,14 +37,14 @@ def scan_manual(ip: str) -> list:
     return clients_list
 
 def print_addresses(clients_list: list):
-    print("\t\tIP \t\t\t\t\t MAC Address")
-    print("-------------------------------------------")
+    print("IP \t\t\t\t MAC Address")
+    print("------------------------------------------------------------------")
     for clients in clients_list:
         print(f"{clients['ip']}\t\t\t{clients['mac']}")
 
 
 
 
-
-test = scan_manual("192.168.146.1/24")
+options = get_aguments()
+test = scan_manual(options.IP_address)
 print_addresses(test)
