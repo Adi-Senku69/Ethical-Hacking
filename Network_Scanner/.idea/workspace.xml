@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="901d387b-72a5-4f4b-b3be-47b7d5d284d1" name="Changes" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/network_scanner.py" beforeDir="false" afterPath="$PROJECT_DIR$/network_scanner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +35,8 @@
     "Python.network_scanner.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main"
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/root/PycharmProjects/Ethical-Hacking/ARP_Spoofer"
   }
 }]]></component>
   <component name="SharedIndexes">
