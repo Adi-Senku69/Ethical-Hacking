@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from scapy.all import *
-import optparse
+import argparse
 
 
 BROADCAST_MAC = "ff:ff:ff:ff:ff:ff"
@@ -10,9 +10,9 @@ def scan(ip):
     scapy.arping(ip)
 
 def get_aguments():
-    parser = optparse.OptionParser()
-    parser.add_option("-i", "--ip", dest="IP_address", help="Input the destination IP address or subnet mask")
-    options = parser.parse_args()[0]
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", "--ip", dest="IP_address", help="Input the destination IP address or subnet mask")
+    options = parser.parse_args()
     if not options.IP_address:
         parser.error("Please specify a target IP address or subnet mask")
     return options
