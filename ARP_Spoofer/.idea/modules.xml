@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ARP_Spoofer.iml" filepath="$PROJECT_DIR$/.idea/ARP_Spoofer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Network_Scanner/.idea/Network Scanner.iml" filepath="$PROJECT_DIR$/../Network_Scanner/.idea/Network Scanner.iml" />
     </modules>
   </component>
 </project>
