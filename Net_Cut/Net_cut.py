@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# iptables -I FORWARD -j NFQUEUE --queue-num [queue num]
+# iptables -I FORWARD -j NFQUEUE --queue-num [queue number]
 import netfilterqueue as net
 
 def process_packet(packet):
