@@ -7,5 +7,7 @@
     <orderEntry type="module" module-name="Mac_Changer" />
     <orderEntry type="module" module-name="ARP_Spoofer" />
     <orderEntry type="module" module-name="Network Scanner" />
+    <orderEntry type="module" module-name="DNS SPoofer" />
+    <orderEntry type="module" module-name="Net_Cut" />
   </component>
 </module>

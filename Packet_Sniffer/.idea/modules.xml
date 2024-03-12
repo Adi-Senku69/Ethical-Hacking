@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../ARP_Spoofer/.idea/ARP_Spoofer.iml" filepath="$PROJECT_DIR$/../ARP_Spoofer/.idea/ARP_Spoofer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../DNS SPoofer/.idea/DNS SPoofer.iml" filepath="$PROJECT_DIR$/../DNS SPoofer/.idea/DNS SPoofer.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Mac_Changer/.idea/Mac_Changer.iml" filepath="$PROJECT_DIR$/../Mac_Changer/.idea/Mac_Changer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Net_Cut/.idea/Net_Cut.iml" filepath="$PROJECT_DIR$/../Net_Cut/.idea/Net_Cut.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Network_Scanner/.idea/Network Scanner.iml" filepath="$PROJECT_DIR$/../Network_Scanner/.idea/Network Scanner.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Packet_Sniffer.iml" filepath="$PROJECT_DIR$/.idea/Packet_Sniffer.iml" />
     </modules>

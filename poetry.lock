@@ -1,4 +1,12 @@
 [[package]]
+name = "netfilterqueue"
+version = "1.1.0"
+description = "Python bindings for libnetfilter_queue"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "scapy"
 version = "2.5.0"
 description = "Scapy: interactive packet manipulation tool"
@@ -14,9 +22,12 @@ docs = ["sphinx (>=3.0.0)", "sphinx_rtd_theme (>=0.4.3)", "tox (>=3.0.0)"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "ca432cf4dc55f975f43750776d3952046883412d6e7e7501a8650d8dc48ed5a5"
+content-hash = "3a72aac512b13e7354e8428b66f71ffbc525fa36f44d626e12de82d56b2ad01b"
 
 [metadata.files]
+netfilterqueue = [
+    {file = "NetfilterQueue-1.1.0.tar.gz", hash = "sha256:e30eff999325617f54bd95b3d8d3353214cc77b5e3188f90ec3a6f6288888d72"},
+]
 scapy = [
     {file = "scapy-2.5.0.tar.gz", hash = "sha256:5b260c2b754fd8d409ba83ee7aee294ecdbb2c235f9f78fe90bc11cb6e5debc2"},
 ]
