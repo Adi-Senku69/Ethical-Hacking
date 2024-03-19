@@ -9,5 +9,6 @@
     <orderEntry type="module" module-name="Network Scanner" />
     <orderEntry type="module" module-name="DNS SPoofer" />
     <orderEntry type="module" module-name="Net_Cut" />
+    <orderEntry type="module" module-name="File_Interceptor" />
   </component>
 </module>

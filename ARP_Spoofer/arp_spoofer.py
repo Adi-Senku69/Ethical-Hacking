@@ -25,7 +25,7 @@ def spoof(target_ip, spoof_ip, target_mac):
 
 
 sent_packets_count = 0
-ip_1 = "10.24.51.170"
+ip_1 = "10.24.50.22"
 ip_2 = "10.24.48.1"
 # ip_1 = "192.168.146.135"
 # ip_2 = "192.168.146.2"

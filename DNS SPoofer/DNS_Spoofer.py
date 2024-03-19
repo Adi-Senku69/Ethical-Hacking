@@ -8,11 +8,11 @@ import re
 
 def process_college_packet(packet):
     # print(packet.show())
-    load = str(packet[scapy.Raw].load)
+    # load = str(packet[scapy.Raw].load)
     print(packet.show())
-    load = load.replace("nmode=191", "nmode=193")
+    # load = load.replace("nmode=191", "nmode=193")
 
-    packet[scapy.Raw].load = load
+    # packet[scapy.Raw].load = load
     del packet[scapy.IP].len
     del packet[scapy.IP].chksum
     return packet
@@ -24,7 +24,8 @@ def process_packet(packet):
     if scapy_packet.haslayer(scapy.TCP):
         if scapy_packet[scapy.TCP].dport == 8090:
             if scapy_packet.haslayer(scapy.Raw):
-                if "username" or "passowrd" in scapy_packet[scapy.Raw].load:
+                load = scapy_packet[scapy.Raw].load
+                if "username" in str(load):
                     new_packet = process_college_packet(scapy_packet)
                     packet.set_payload(bytes(new_packet))
 
