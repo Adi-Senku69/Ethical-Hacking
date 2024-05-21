@@ -3,7 +3,18 @@
 import scapy.all as scapy
 import time
 import subprocess
+import argparse
 
+
+def get_arguments():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i1", "--ip1", dest="ip1", help="Specify the Target IP")
+    parser.add_argument("-i2", "--ip2", dest="ip2", help="Specify the Default Gateway IP")
+    options = parser.parse_args()
+    if not options.ip1 or not options.ip2:
+        parser.error("Please specify the IP address")
+
+    return options
 
 
 def get_mac(ip: str) -> str:
@@ -25,8 +36,9 @@ def spoof(target_ip, spoof_ip, target_mac):
 
 
 sent_packets_count = 0
-ip_1 = "10.24.50.22"
-ip_2 = "10.24.48.1"
+options = get_arguments()
+ip_1 = options.ip1
+ip_2 = options.ip2
 # ip_1 = "192.168.146.135"
 # ip_2 = "192.168.146.2"
 try:

@@ -30,7 +30,7 @@ def process_sniffed_packet(packet):
     login_credentials = get_login_credentials(packet)
     if login_credentials:
         print(login_credentials)
-    scapy.wrpcap("output_new.pcap", packet, append=True)
+    # scapy.wrpcap("output_new.pcap", packet, append=True)
 
 def get_login_credentials(packet):
     login_credentials = {}
